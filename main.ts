@@ -1,50 +1,22 @@
-input.onButtonPressed(Button.A, function on_button_pressed_a() {
-    
+input.onButtonPressed(Button.A, function () {
     menu_num += -1
 })
-input.onButtonPressed(Button.AB, function on_button_pressed_ab() {
-    
+input.onButtonPressed(Button.AB, function () {
     clicked = 1
 })
-input.onButtonPressed(Button.B, function on_button_pressed_b() {
-    
+input.onButtonPressed(Button.B, function () {
     menu_num += 1
 })
-radio.onReceivedValue(function on_received_value(name: string, value: number) {
+radio.onReceivedValue(function (name, value) {
     if (receiving == 1) {
-        basic.showString("" + ("" + value))
+        basic.showString("" + value)
     }
-    
 })
+let loop = 0
 let receiving = 0
 let clicked = 0
 let menu_num = 1
-let loop = 0
-basic.forever(function on_forever() {
-    
-    if (loop == 0) {
-        if (menu_num > 0 || menu_num < 4) {
-            if (menu_num == 1) {
-                basic.showString("Send")
-            }
-            
-            if (menu_num == 2) {
-                basic.showString("Receive")
-            }
-            
-            if (menu_num == 3) {
-                basic.showString("Group")
-            }
-            
-        } else {
-            menu_num = 1
-        }
-        
-    }
-    
-})
-basic.forever(function on_forever2() {
-    
+basic.forever(function () {
     if (clicked == 1) {
         basic.pause(100)
         loop = 1
@@ -53,24 +25,21 @@ basic.forever(function on_forever2() {
             menu_num = 1
             while (loop == 1) {
                 if (menu_num > 0 && menu_num < 11) {
-                    basic.showString("" + ("" + menu_num))
+                    basic.showString("" + menu_num)
                     if (clicked == 1) {
                         radio.setGroup(menu_num)
                         basic.showString("Connected to... " + ("" + menu_num))
                         basic.pause(100)
                         clicked = 0
                     }
-                    
                 } else if (menu_num == 11) {
                     loop = 0
                     menu_num = 1
                 } else {
                     menu_num = 1
                 }
-                
             }
         }
-        
         if (menu_num == 2) {
             receiving = 1
             while (loop == 1) {
@@ -80,10 +49,38 @@ basic.forever(function on_forever2() {
                     clicked = 0
                     loop = 0
                 }
-                
             }
         }
-        
+        if (menu_num == 3) {
+            menu_num = 1
+            while (loop == 1) {
+                if (menu_num > 0 || menu_num < 2) {
+                    if (menu_num == 1) {
+                    	
+                    } else if (false) {
+                    	
+                    }
+                } else {
+                    loop = 0
+                }
+            }
+        }
     }
-    
+})
+basic.forever(function () {
+    if (loop == 0) {
+        if (menu_num > 0 || menu_num < 4) {
+            if (menu_num == 1) {
+                basic.showString("Send")
+            }
+            if (menu_num == 2) {
+                basic.showString("Receive")
+            }
+            if (menu_num == 3) {
+                basic.showString("Group")
+            }
+        } else {
+            menu_num = 1
+        }
+    }
 })
