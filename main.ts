@@ -4,18 +4,20 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.AB, function () {
     clicked = 1
 })
+radio.onReceivedString(function (receivedString) {
+    if (receiving == 1) {
+        basic.showString(receivedString)
+    }
+})
 input.onButtonPressed(Button.B, function () {
     menu_num += 1
 })
-radio.onReceivedValue(function (name, value) {
-    if (receiving == 1) {
-        basic.showString("" + value)
-    }
-})
+let message = ""
 let loop = 0
 let receiving = 0
 let clicked = 0
 let menu_num = 1
+radio.setGroup(1)
 basic.forever(function () {
     if (clicked == 1) {
         basic.pause(100)
@@ -51,17 +53,23 @@ basic.forever(function () {
                 }
             }
         }
-        if (menu_num == 3) {
+        if (menu_num == 1) {
             menu_num = 1
             while (loop == 1) {
                 if (menu_num > 0 || menu_num < 2) {
                     if (menu_num == 1) {
-                    	
-                    } else if (false) {
-                    	
+                        message = "Hello"
+                        basic.showString("Hello")
+                    } else {
+                        message = "Goodbye"
+                        basic.showString("Goodbye")
                     }
                 } else {
                     loop = 0
+                }
+                if (clicked == 1) {
+                    radio.sendString(message)
+                    clicked = 0
                 }
             }
         }
