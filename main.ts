@@ -27,7 +27,7 @@ basic.forever(function () {
             menu_num = 1
             while (loop == 1) {
                 if (menu_num > 0 && menu_num < 11) {
-                    basic.showString("" + menu_num)
+                    basic.showString("" + (menu_num))
                     if (clicked == 1) {
                         radio.setGroup(menu_num)
                         basic.showString("Connected to... " + ("" + menu_num))
@@ -56,10 +56,25 @@ basic.forever(function () {
         if (menu_num == 1) {
             menu_num = 1
             while (loop == 1) {
-                if (menu_num > 0 || menu_num < 2) {
+                if (menu_num > 0 || menu_num < 8) {
                     if (menu_num == 1) {
                         message = "Hello"
                         basic.showString("Hello")
+                    } else if (menu_num == 2) {
+                        message = "How are you?"
+                        basic.showString("How are you?")
+                    } else if (menu_num == 3) {
+                        message = "Good"
+                        basic.showString("Good")
+                    } else if (menu_num == 4) {
+                        message = "Bad"
+                        basic.showString("Bad")
+                    } else if (menu_num == 5) {
+                        message = "Yes"
+                        basic.showString("Yes")
+                    } else if (menu_num == 6) {
+                        message = "No"
+                        basic.showString("No")
                     } else {
                         message = "Goodbye"
                         basic.showString("Goodbye")
