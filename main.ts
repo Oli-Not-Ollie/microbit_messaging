@@ -18,6 +18,50 @@ let receiving = 0
 let clicked = 0
 let menu_num = 1
 radio.setGroup(1)
+let list = [
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z",
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"0",
+".",
+"?",
+",",
+":",
+")",
+"("
+]
 basic.forever(function () {
     if (clicked == 1) {
         basic.pause(100)
@@ -75,16 +119,40 @@ basic.forever(function () {
                     } else if (menu_num == 6) {
                         message = "No"
                         basic.showString("No")
-                    } else {
+                    } else if (menu_num == 7) {
                         message = "Goodbye"
                         basic.showString("Goodbye")
+                    } else {
+                        basic.showString("Custom")
                     }
                 } else {
                     loop = 0
                 }
                 if (clicked == 1) {
-                    radio.sendString(message)
-                    clicked = 0
+                    if (menu_num == 8) {
+                        message = ""
+                        loop = 2
+                        clicked = 0
+                        while (loop == 2) {
+                            if (menu_num > 0 || menu_num < list.length) {
+                                basic.showString("" + (list[menu_num]))
+                            } else {
+                                if (menu_num > list.length) {
+                                    loop = 1
+                                    menu_num = 1
+                                    radio.sendString(message)
+                                } else {
+                                    menu_num = 1
+                                }
+                            }
+                            if (clicked == 1) {
+                                message = "" + message + list[menu_num]
+                            }
+                        }
+                    } else {
+                        radio.sendString(message)
+                        clicked = 0
+                    }
                 }
             }
         }
