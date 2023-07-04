@@ -13,7 +13,7 @@ input.onButtonPressed(Button.B, function () {
     menu_num += 1
 })
 function MENU () {
-    if (loop == 0) {
+    while (loop == 0) {
         if (menu_num > 0 || menu_num < 4) {
             if (menu_num == 1) {
                 basic.showString("Send")
@@ -27,13 +27,17 @@ function MENU () {
         } else {
             menu_num = 1
         }
+        if (clicked == 1) {
+            loop = 1
+        }
     }
 }
 let message = ""
-let loop = 0
 let receiving = 0
 let clicked = 0
 let menu_num = 0
+let loop = 0
+loop = 0
 menu_num = 1
 radio.setGroup(1)
 let list = [
