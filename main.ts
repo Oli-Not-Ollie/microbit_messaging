@@ -101,7 +101,7 @@ basic.forever(function () {
             menu_num = 1
             while (loop == 1) {
                 message = ""
-                if (menu_num > 0 || menu_num < 9) {
+                if (menu_num > 0 || menu_num < 8) {
                     if (menu_num == 1) {
                         message = "Hello"
                         basic.showString("Hello")
@@ -125,38 +125,13 @@ basic.forever(function () {
                         basic.showString("Goodbye")
                     } else if (menu_num == 8) {
                         message = "Goodbye"
-                    } else {
-                        basic.showString("Custom")
                     }
                 } else {
                     loop = 0
                 }
                 if (clicked == 1) {
-                    if (menu_num == 9) {
-                        message = ""
-                        loop = 2
-                        clicked = 0
-                        menu_num = 1
-                        while (loop == 2) {
-                            if (menu_num > 0 || menu_num < list.length) {
-                                basic.showString("" + (list[menu_num]))
-                            } else {
-                                if (menu_num > list.length) {
-                                    loop = 1
-                                    menu_num = 1
-                                    radio.sendString(message)
-                                } else {
-                                    loop = 1
-                                }
-                            }
-                            if (clicked == 1) {
-                                message = "" + message + list[menu_num]
-                            }
-                        }
-                    } else {
-                        radio.sendString(message)
-                        clicked = 0
-                    }
+                    radio.sendString(message)
+                    clicked = 0
                 }
             }
         }
