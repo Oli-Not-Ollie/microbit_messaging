@@ -12,11 +12,29 @@ radio.onReceivedString(function (receivedString) {
 input.onButtonPressed(Button.B, function () {
     menu_num += 1
 })
+function MENU () {
+    if (loop == 0) {
+        if (menu_num > 0 || menu_num < 4) {
+            if (menu_num == 1) {
+                basic.showString("Send")
+            }
+            if (menu_num == 2) {
+                basic.showString("Receive")
+            }
+            if (menu_num == 3) {
+                basic.showString("Group")
+            }
+        } else {
+            menu_num = 1
+        }
+    }
+}
 let message = ""
 let loop = 0
 let receiving = 0
 let clicked = 0
-let menu_num = 1
+let menu_num = 0
+menu_num = 1
 radio.setGroup(1)
 let list = [
 "a",
@@ -62,6 +80,7 @@ let list = [
 ")",
 "("
 ]
+MENU()
 basic.forever(function () {
     if (clicked == 1) {
         basic.pause(100)
@@ -81,6 +100,7 @@ basic.forever(function () {
                 } else if (menu_num == 11) {
                     loop = 0
                     menu_num = 1
+                    MENU()
                 } else {
                     menu_num = 1
                 }
@@ -94,6 +114,7 @@ basic.forever(function () {
                     receiving = 0
                     clicked = 0
                     loop = 0
+                    MENU()
                 }
             }
         }
@@ -128,29 +149,13 @@ basic.forever(function () {
                     }
                 } else {
                     loop = 0
+                    MENU()
                 }
                 if (clicked == 1) {
                     radio.sendString(message)
                     clicked = 0
                 }
             }
-        }
-    }
-})
-basic.forever(function () {
-    if (loop == 0) {
-        if (menu_num > 0 || menu_num < 4) {
-            if (menu_num == 1) {
-                basic.showString("Send")
-            }
-            if (menu_num == 2) {
-                basic.showString("Receive")
-            }
-            if (menu_num == 3) {
-                basic.showString("Group")
-            }
-        } else {
-            menu_num = 1
         }
     }
 })
