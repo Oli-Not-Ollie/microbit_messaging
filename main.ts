@@ -100,6 +100,7 @@ basic.forever(function () {
         if (menu_num == 1) {
             menu_num = 1
             while (loop == 1) {
+                message = ""
                 if (menu_num > 0 || menu_num < 8) {
                     if (menu_num == 1) {
                         message = "Hello"
@@ -122,6 +123,8 @@ basic.forever(function () {
                     } else if (menu_num == 7) {
                         message = "Goodbye"
                         basic.showString("Goodbye")
+                    } else if (menu_num == 8) {
+                        message = "Goodbye"
                     } else {
                         basic.showString("Custom")
                     }
