@@ -40,50 +40,6 @@ let loop = 0
 loop = 0
 menu_num = 1
 radio.setGroup(1)
-let list = [
-"a",
-"b",
-"c",
-"d",
-"e",
-"f",
-"g",
-"h",
-"i",
-"j",
-"k",
-"l",
-"m",
-"n",
-"o",
-"p",
-"q",
-"r",
-"s",
-"t",
-"u",
-"v",
-"w",
-"x",
-"y",
-"z",
-"1",
-"2",
-"3",
-"4",
-"5",
-"6",
-"7",
-"8",
-"9",
-"0",
-".",
-"?",
-",",
-":",
-")",
-"("
-]
 MENU()
 basic.forever(function () {
     if (clicked == 1) {
@@ -112,6 +68,7 @@ basic.forever(function () {
         }
         if (menu_num == 2) {
             receiving = 1
+            clicked = 0
             while (loop == 1) {
                 music.playMelody("E G F G E G F G ", 130)
                 if (clicked == 1) {
